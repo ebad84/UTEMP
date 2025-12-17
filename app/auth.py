@@ -1,8 +1,18 @@
 from flask import Blueprint, request, redirect, render_template, session
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask import session, redirect
+from functools import wraps
 from .db import get_db
 
 auth_bp = Blueprint('auth', __name__)
+
+def login_required(view):
+    @wraps(view)
+    def wrapped(*args, **kwargs):
+        if 'user_id' not in session:
+            return redirect('/login')
+        return view(*args, **kwargs)
+    return wrapped
 
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
@@ -29,3 +39,8 @@ def login():
             session['user_id'] = user['id']
             return redirect('/')
     return render_template('login.html')
+
+@auth_bp.route('/logout')
+def logout():
+    session.clear()
+    return redirect('/login')

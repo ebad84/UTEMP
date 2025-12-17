@@ -60,13 +60,18 @@
 <body>
 
 <nav>
-    <div><b>You Temp</b></div>
     <div>
-        <a href="/">Dashboard</a>
-        <a href="/new-sensor">New Sensor</a>
+    <a href="/">Dashboard</a>
+    <a href="/new-sensor">New Sensor</a>
+
+    {% if logged_in %}
+        <a href="/logout">Logout</a>
+    {% else %}
         <a href="/login">Login</a>
         <a href="/register">Register</a>
-    </div>
+    {% endif %}
+</div>
+
 </nav>
 
 <div class="container">
