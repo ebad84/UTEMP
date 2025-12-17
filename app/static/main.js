@@ -11,8 +11,10 @@ function loadSensors() {
                 tr.innerHTML = `
                     <td>${s.name}</td>
                     <td>${s.uuid}</td>
+                    <td>${s.username}</td>
                     <td class="temp">${s.temperature ?? '-'}</td>
                 `;
+
 
                 tbody.appendChild(tr);
             });

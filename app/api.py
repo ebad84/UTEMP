@@ -21,8 +21,21 @@ def upload():
 def sensors():
     db = get_db()
     rows = db.execute(
-        "SELECT s.name, s.uuid, sd.temperature FROM sensors s "
-        "LEFT JOIN sensor_data sd ON sd.id = ("
-        "SELECT id FROM sensor_data WHERE sensor_id=s.id ORDER BY created_at DESC LIMIT 1)"
+        """
+        SELECT
+            s.name,
+            s.uuid,
+            sd.temperature,
+            u.username
+        FROM sensors s
+        JOIN users u ON u.id = s.user_id
+        LEFT JOIN sensor_data sd ON sd.id = (
+            SELECT id FROM sensor_data
+            WHERE sensor_id = s.id
+            ORDER BY created_at DESC
+            LIMIT 1
+        )
+        """
     ).fetchall()
+
     return jsonify([dict(r) for r in rows])

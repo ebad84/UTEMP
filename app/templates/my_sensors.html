@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<title>My Sensors - You Temp</title>
+<style>
+body { margin:0; font-family:sans-serif; background:#f5f7fa }
+nav { background:#1e293b; color:white; padding:12px 20px; display:flex; justify-content:space-between }
+nav a { color:white; margin-left:15px; text-decoration:none }
+.container { padding:30px }
+.card { background:white; padding:20px; border-radius:10px; margin-bottom:15px }
+code { background:#f1f5f9; padding:6px; border-radius:5px; display:block; word-break:break-all }
+</style>
+</head>
+<body>
+
+<nav>
+<b>You Temp</b>
+<div>
+    <a href="/">Dashboard</a>
+    <a href="/new-sensor">New Sensor</a>
+    <a href="/logout">Logout</a>
+</div>
+</nav>
+
+<div class="container">
+<h2>My Sensors</h2>
+
+{% for s in sensors %}
+<div class="card">
+    <b>{{ s['name'] }}</b><br>
+    <small>{{ s['description'] }}</small>
+
+    <p>UUID:</p>
+    <code>{{ s['uuid'] }}</code>
+
+    <p>API KEY:</p>
+    <code>{{ s['api_key'] }}</code>
+</div>
+{% else %}
+<p>هنوز سنسوری نساختی</p>
+{% endfor %}
+
+</div>
+</body>
+</html>
