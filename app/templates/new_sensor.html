@@ -1,95 +1,12 @@
-<!DOCTYPE html>
-<html lang="fa">
-<head>
-    <meta charset="UTF-8">
-    <title>New Sensor - You Temp</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: sans-serif;
-            background: #f5f7fa;
-        }
+{% extends "base.html" %}
+{% block title %}New Sensor - You Temp{% endblock %}
 
-        nav {
-            background: #1e293b;
-            color: white;
-            padding: 12px 20px;
-            display: flex;
-            justify-content: space-between;
-        }
+{% block content %}
+<h1>Create New Sensor</h1>
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 15px;
-        }
-
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: calc(100vh - 60px);
-        }
-
-        .card {
-            background: white;
-            padding: 30px;
-            width: 400px;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-        }
-
-        textarea {
-            resize: vertical;
-            height: 80px;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            background: #0ea5e9;
-            border: none;
-            color: white;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #0284c7;
-        }
-    </style>
-</head>
-<body>
-
-<nav>
-    <b>You Temp</b>
-    <div>
-        <a href="/">Dashboard</a>
-        <a href="/new-sensor">New Sensor</a>
-    </div>
-</nav>
-
-<div class="container">
-    <form class="card" method="post">
-        <h2>Create New Sensor</h2>
-        <input name="name" placeholder="Sensor name" required>
-        <textarea name="description" placeholder="Description"></textarea>
-        <button type="submit">Create Sensor</button>
-    </form>
-</div>
-
-</body>
-</html>
+<form method="post" style="max-width:400px; margin:auto; background:white; padding:30px; border-radius:10px; box-shadow:0 10px 25px rgba(0,0,0,0.08)">
+    <input name="name" placeholder="Sensor name" required style="width:100%; padding:10px; margin-bottom:15px; border-radius:6px; border:1px solid #ccc;">
+    <textarea name="description" placeholder="Description" style="width:100%; padding:10px; margin-bottom:15px; border-radius:6px; border:1px solid #ccc; resize:vertical; height:80px"></textarea>
+    <button type="submit" style="width:100%; padding:10px; background:#0ea5e9; color:white; border:none; border-radius:6px; cursor:pointer;">Create Sensor</button>
+</form>
+{% endblock %}

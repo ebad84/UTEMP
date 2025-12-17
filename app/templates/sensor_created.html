@@ -1,85 +1,21 @@
-<!DOCTYPE html>
-<html lang="fa">
-<head>
-    <meta charset="UTF-8">
-    <title>Sensor Created - You Temp</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: sans-serif;
-            background: #f5f7fa;
-        }
+{% extends "base.html" %}
+{% block title %}Sensor Created - You Temp{% endblock %}
 
-        nav {
-            background: #1e293b;
-            color: white;
-            padding: 12px 20px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 15px;
-        }
-
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: calc(100vh - 60px);
-        }
-
-        .card {
-            background: white;
-            padding: 30px;
-            width: 420px;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-        }
-
-        code {
-            display: block;
-            background: #f1f5f9;
-            padding: 10px;
-            border-radius: 6px;
-            margin-bottom: 15px;
-            word-break: break-all;
-        }
-
-        .warn {
-            color: #dc2626;
-            font-size: 14px;
-        }
-    </style>
-</head>
-<body>
-
-<nav>
-    <b>You Temp</b>
-    <div>
-        <a href="/">Dashboard</a>
-        <a href="/new-sensor">New Sensor</a>
-    </div>
-</nav>
-
-<div class="container">
+{% block content %}
+<div class="container-center">
     <div class="card">
-        <h2>Sensor Created ✅</h2>
+        <h2>Sensor Created Successfully!</h2>
 
-        <p><b>UUID (Read only):</b></p>
-        <code>{{ uuid }}</code>
+        <p><strong>Name:</strong> {{ sensor.name }}</p>
+        <p><strong>Description:</strong> {{ sensor.description }}</p>
 
-        <p><b>API KEY (Write only):</b></p>
-        <code>{{ api_key }}</code>
+        <p><strong>UUID:</strong></p>
+        <code>{{ sensor.uuid }}</code>
 
-        <p class="warn">
-            ⚠️ این API KEY فقط همین یک بار نمایش داده می‌شود.  
-            حتماً ذخیره‌اش کن.
-        </p>
+        <p><strong>API KEY:</strong></p>
+        <code>{{ sensor.api_key }}</code>
+
+        <a href="/my-sensors" style="display:block; margin-top:20px; text-align:center; text-decoration:none; color:#2563eb;">Go to My Sensors</a>
     </div>
 </div>
-
-</body>
-</html>
+{% endblock %}

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{% block title %}You Temp{% endblock %}</title>
+
+<style>
+/* ===== Body & Layout ===== */
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: #f5f7fa;
+    direction: ltr;
+}
+
+/* ===== Navbar ===== */
+nav {
+    background: #1e293b;
+    color: white;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+    font-weight: 500;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* ===== Containers ===== */
+.container {
+    padding: 30px;
+}
+
+.container-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px);
+}
+
+/* ===== Headings ===== */
+h1, h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* ===== Tables ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background: #f1f5f9;
+}
+
+.temp {
+    font-weight: bold;
+}
+
+/* ===== Forms & Cards ===== */
+form.card {
+    max-width: 400px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    width: 420px; /* برای sensor_created */
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.card-sensor {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* ===== Inputs ===== */
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+    height: 80px;
+}
+
+/* ===== Buttons ===== */
+button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+button.login { background: #2563eb; }
+button.login:hover { background: #1d4ed8; }
+
+button.register { background: #16a34a; }
+button.register:hover { background: #15803d; }
+
+button.new_sensor { background: #0ea5e9; }
+button.new_sensor:hover { background: #0284c7; }
+
+/* ===== Code & pre ===== */
+code, pre {
+    display: block;
+    background: #f1f5f9;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    word-break: break-all;
+}
+
+/* ===== Warnings / Messages ===== */
+.warn {
+    color: #dc2626;
+    font-size: 14px;
+}
+
+/* ===== Misc ===== */
+small {
+    color: #555;
+}
+
+
+</style>
+
+{% block extra_head %}{% endblock %}
+</head>
+
+<body>
+
+<nav>
+    <strong>You Temp</strong>
+
+    <a href="/">Dashboard</a>
+
+    {% if session.get('user_id') %}
+        <a href="/my-sensors">My Sensors</a>
+        <a href="/new-sensor">New Sensor</a>
+        <a href="/logout">Logout</a>
+    {% else %}
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+    {% endif %}
+</nav>
+
+<div class="container">
+{% block content %}{% endblock %}
+</div>
+
+</body>
+</html>

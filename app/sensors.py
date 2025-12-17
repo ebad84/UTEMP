@@ -16,29 +16,43 @@ def index():
 @sensors_bp.route('/new-sensor', methods=['GET', 'POST'])
 def new_sensor():
     if request.method == 'POST':
+        # تولید uuid و api_key
         sensor_uuid = gen_uuid()
         api_key = gen_key()
 
+        name = request.form['name']
+        description = request.form.get('description', '')
+
+        # ذخیره در DB
         db = get_db()
         db.execute(
             "INSERT INTO sensors (user_id, name, description, uuid, api_key) VALUES (?,?,?,?,?)",
             (
                 session.get('user_id'),
-                request.form['name'],
-                request.form['description'],
+                name,
+                description,
                 sensor_uuid,
                 api_key
             )
         )
         db.commit()
 
+        # دیکشنری sensor برای template
+        sensor = {
+            "name": name,
+            "description": description,
+            "uuid": sensor_uuid,
+            "api_key": api_key
+        }
+
+        # پاس دادن sensor
         return render_template(
             'sensor_created.html',
-            uuid=sensor_uuid,
-            api_key=api_key
+            sensor=sensor
         )
 
     return render_template('new_sensor.html')
+
 
 @sensors_bp.route('/my-sensors')
 @login_required
