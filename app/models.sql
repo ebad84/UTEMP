@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE,
+    password_hash TEXT
+);
+
+CREATE TABLE IF NOT EXISTS sensors (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER,
+    name TEXT,
+    description TEXT,
+    uuid TEXT UNIQUE,
+    api_key TEXT UNIQUE,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS sensor_data (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    sensor_id INTEGER,
+    temperature REAL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);

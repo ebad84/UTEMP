@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>New Sensor - You Temp</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            background: #f5f7fa;
+        }
+
+        nav {
+            background: #1e293b;
+            color: white;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 60px);
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 80px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #0ea5e9;
+            border: none;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0284c7;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <b>You Temp</b>
+    <div>
+        <a href="/">Dashboard</a>
+        <a href="/new-sensor">New Sensor</a>
+    </div>
+</nav>
+
+<div class="container">
+    <form class="card" method="post">
+        <h2>Create New Sensor</h2>
+        <input name="name" placeholder="Sensor name" required>
+        <textarea name="description" placeholder="Description"></textarea>
+        <button type="submit">Create Sensor</button>
+    </form>
+</div>
+
+</body>
+</html>
