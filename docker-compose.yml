@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: utemp
+    ports:
+      - "6926:5000"
+    volumes:
+      - ./database.db:/app/database.db
+    restart: unless-stopped
+    environment:
+      - FLASK_APP=run.py
+      - PYTHONUNBUFFERED=1
+
