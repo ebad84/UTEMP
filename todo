@@ -1,4 +1,4 @@
  [] improving security on login,register,api,new sensor
- [] making a test?
+ [x] making a test?
  [] make a micropython thingy for it to run
  [] add mqtt
